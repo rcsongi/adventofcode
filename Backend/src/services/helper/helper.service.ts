@@ -12,7 +12,7 @@ export class HelperService {
       const lines = fileContent.split('\n');
 
       // Remove any leading or trailing whitespaces from each line
-      return lines.map(line => line.trim());
+      return lines.map((line) => line.trim());
     } catch (error) {
       // Handle errors (e.g., file not found, permissions issues)
       console.error(`Error reading file: ${error.message}`);

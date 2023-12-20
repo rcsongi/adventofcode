@@ -1,30 +1,32 @@
 import { Injectable } from '@nestjs/common';
 import { HelperService } from '../helper/helper.service';
-import * as fs from 'fs';
-
 @Injectable()
 export class FirstService {
   constructor(private readonly helperService: HelperService) {}
 
   first(): number {
-    const lines = this.helperService.readFileIntoArray('src/input-files/input_1.txt');
+    const lines = this.helperService.readFileIntoArray(
+      'src/input-files/input_1.txt',
+    );
     let sum = 0;
-    lines.forEach(line => {
+    lines.forEach((line) => {
       const chars = [...line];
-      const filteredChars = chars.filter(s => !isNaN(+s));
+      const filteredChars = chars.filter((s) => !isNaN(+s));
       const first = +filteredChars[0] * 10;
       const last = +filteredChars[filteredChars.length - 1];
-      sum += (first + last);
+      sum += first + last;
     });
     return sum;
   }
 
   second(): number {
     let sum = 0;
-    const lines = this.helperService.readFileIntoArray('src/input-files/input_1.txt');
-    lines.forEach(line => {
+    const lines = this.helperService.readFileIntoArray(
+      'src/input-files/input_1.txt',
+    );
+    lines.forEach((line) => {
       const chars = [...line];
-      const filteredChars = chars.filter(s => !isNaN(+s));
+      const filteredChars = chars.filter((s) => !isNaN(+s));
 
       const firstNumber = +filteredChars[0] * 10;
       const firstNumberIndex = chars.indexOf(filteredChars[0].toString());
@@ -46,8 +48,12 @@ export class FirstService {
       });
       const lastNumber = +filteredChars[filteredChars.length - 1];
 
-      const lastNumberIndex = chars.lastIndexOf(filteredChars[filteredChars.length - 1]);
-      const lineSum = (firstNumberIndex < firstDigitIndex ? firstNumber : firstDigit) + (lastNumberIndex > lastDigitIndex ? lastNumber : lastDigit);
+      const lastNumberIndex = chars.lastIndexOf(
+        filteredChars[filteredChars.length - 1],
+      );
+      const lineSum =
+        (firstNumberIndex < firstDigitIndex ? firstNumber : firstDigit) +
+        (lastNumberIndex > lastDigitIndex ? lastNumber : lastDigit);
       sum = sum + lineSum;
     });
     return sum;
@@ -66,6 +72,4 @@ export class FirstService {
       'nine',
     ];
   }
-
-
 }

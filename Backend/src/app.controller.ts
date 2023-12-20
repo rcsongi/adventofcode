@@ -5,7 +5,10 @@ import { SecondService } from './services/second/second.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly firstService: FirstService, private readonly secondService: SecondService) {}
+  constructor(
+    private readonly firstService: FirstService,
+    private readonly secondService: SecondService,
+  ) {}
 
   @Get('/first')
   getFirst(): string {
