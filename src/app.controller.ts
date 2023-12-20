@@ -32,7 +32,7 @@ export class AppController {
   getThird(): ResponseModel {
     return {
       first: this.thirdService.first(),
-      second: 0,
+      second: this.thirdService.second(),
     };
   }
 }

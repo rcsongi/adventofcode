@@ -3,3 +3,9 @@ export interface SymbolModel {
   posY: number;
   symbol: string;
 }
+
+export interface NumberModel {
+  posX: number;
+  posY: number;
+  number: number;
+}
