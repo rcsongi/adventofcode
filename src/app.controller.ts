@@ -2,6 +2,7 @@ import { Controller, Get } from '@nestjs/common';
 
 import { FirstService } from './services/first/first.service';
 import { SecondService } from './services/second/second.service';
+import { ResponseModel } from './models/responses.models';
 
 @Controller()
 export class AppController {
@@ -9,14 +10,19 @@ export class AppController {
     private readonly firstService: FirstService,
     private readonly secondService: SecondService,
   ) {}
-
   @Get('/first')
-  getFirst(): string {
-    return `<strong>${this.firstService.first()}</strong>  <p><strong>${this.firstService.second()}</strong></p> `;
+  getFirst(): ResponseModel {
+    return {
+      first: this.firstService.first(),
+      second: this.firstService.second(),
+    };
   }
 
   @Get('/second')
-  getSecond(): string {
-    return `<strong>${this.secondService.first()}</strong>  <p><strong>${this.secondService.second()}</strong></p> `;
+  getSecond(): ResponseModel {
+    return {
+      first: this.secondService.first(),
+      second: this.secondService.second(),
+    };
   }
 }
